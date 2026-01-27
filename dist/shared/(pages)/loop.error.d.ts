@@ -1,1 +1,1 @@
-export default function LoopErrorPage(): import("react/jsx-runtime").JSX.Element;
+export declare const LoopErrorPage: () => import("react/jsx-runtime").JSX.Element;

@@ -1,7 +1,7 @@
 /**
  * @copyright 2026 HelperVia / Yaşar Demirtaş
  * @license UNLICENSED - Proprietary and Confidential
- * @build-id 1769535335338-vsd9fe
+ * @build-id 1769536686164-pfaugf
  * Unauthorized copying, distribution, or use is strictly prohibited.
  */
 
