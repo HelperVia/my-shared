@@ -13,7 +13,8 @@
     "./constants": "./dist/shared/constants/index.js",
     "./types": "./dist/shared/types/index.js",
     "./context": "./dist/shared/context/index.js",
-    "./client": "./dist/client.js"
+    "./middleware": "./dist/shared/middleware/index.js",
+    "./pages": "./dist/shared/(pages)/index.js"
   },
   "typesVersions": {
     "*": {
@@ -38,8 +39,11 @@
       "context": [
         "./dist/shared/context/index.d.ts"
       ],
-      "client": [
-        "./dist/client.d.ts"
+      "middleware": [
+        "./dist/shared/middleware/index.d.ts"
+      ],
+      "pages": [
+        "./dist/shared/(pages)/index.d.ts"
       ]
     }
   },
