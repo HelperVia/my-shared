@@ -5,4 +5,3 @@ interface DeviceDetect {
 }
 export declare const useDeviceDetect: () => DeviceDetect;
 export {};
-//# sourceMappingURL=use-device-detect.d.ts.map

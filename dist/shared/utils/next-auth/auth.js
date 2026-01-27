@@ -14,4 +14,3 @@ export const getSession = async (authOptions) => {
     const session = await getServerSession(authOptions);
     return session;
 };
-//# sourceMappingURL=auth.js.map

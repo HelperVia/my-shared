@@ -44,4 +44,3 @@ export const createAxiosServer = async (headers = {}, options) => {
     });
     return AxiosServer;
 };
-//# sourceMappingURL=api.server.js.map

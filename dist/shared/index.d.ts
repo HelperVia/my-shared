@@ -6,4 +6,3 @@ export * from "./lib";
 export * from "./middleware";
 export * from "./types";
 export * from "./utils";
-//# sourceMappingURL=index.d.ts.map

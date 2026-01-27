@@ -59,4 +59,3 @@ export const createAuthCookies = (props = {}) => {
         },
     };
 };
-//# sourceMappingURL=cookie.js.map

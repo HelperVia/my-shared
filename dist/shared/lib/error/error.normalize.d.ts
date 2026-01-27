@@ -8,4 +8,3 @@ export declare function looksLikeZodError(obj: unknown): obj is {
     }>;
 };
 export declare const parserZodError: (error: unknown) => ErrorPayload;
-//# sourceMappingURL=error.normalize.d.ts.map

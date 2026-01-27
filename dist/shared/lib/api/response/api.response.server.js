@@ -4,4 +4,3 @@ export const ApiResponseServer = async (response) => {
         status: response?.status,
     });
 };
-//# sourceMappingURL=api.response.server.js.map

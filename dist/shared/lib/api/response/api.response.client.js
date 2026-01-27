@@ -43,4 +43,3 @@ export const ApiResponseClient = async (response) => {
         };
     }
 };
-//# sourceMappingURL=api.response.client.js.map

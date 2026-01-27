@@ -23,4 +23,3 @@ export default function GlobalLoadingProvider({ children, LoadingComponent, }) {
         return null;
     return (_jsxs(GlobalLoadingContext.Provider, { value: loading, children: [loading && (LoadingComponent ?? _jsx("div", { children: "Loading..." })), children] }));
 }
-//# sourceMappingURL=global.loading.provider.js.map

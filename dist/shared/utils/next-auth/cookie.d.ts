@@ -10,4 +10,3 @@ type createAuthCookiesType = {
 };
 export declare const createAuthCookies: (props?: createAuthCookiesType) => CookiesOptions;
 export {};
-//# sourceMappingURL=cookie.d.ts.map

@@ -5,4 +5,3 @@ type Props = {
 };
 export default function GlobalLoadingProvider({ children, LoadingComponent, }: Props): import("react/jsx-runtime").JSX.Element | null;
 export {};
-//# sourceMappingURL=global.loading.provider.d.ts.map

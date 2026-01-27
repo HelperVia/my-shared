@@ -15,4 +15,3 @@ export const useDeviceDetect = () => {
     }, []);
     return { isMobile, isTablet, isDesktop };
 };
-//# sourceMappingURL=use-device-detect.js.map

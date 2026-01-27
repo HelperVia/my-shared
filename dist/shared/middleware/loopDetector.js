@@ -15,4 +15,3 @@ export async function detectRouteLoop(req, res, options = {}) {
     res.cookies.set(cookieName, redirectCount.toString(), { maxAge: maxAge });
     return res;
 }
-//# sourceMappingURL=loopDetector.js.map

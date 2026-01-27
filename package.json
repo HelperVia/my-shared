@@ -4,9 +4,19 @@
   "description": "Shared types, constants, utilities, hooks and contexts for frontend and backend",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./lib": "./dist/shared/lib/index.js",
+    "./lib/*": "./dist/shared/lib/*/index.js",
+    "./hooks": "./dist/shared/hooks/index.js",
+    "./utils": "./dist/shared/utils/index.js",
+    "./constants": "./dist/shared/constants/index.js",
+    "./types": "./dist/shared/types/index.js",
+    "./context": "./dist/shared/context/index.js",
+    "./client": "./dist/client.js"
+  },
   "scripts": {
     "build": "tsc",
-    "watch": "tsc --watch",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
     "type-check": "tsc --noEmit"

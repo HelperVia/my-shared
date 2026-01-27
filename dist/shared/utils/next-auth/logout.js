@@ -6,4 +6,3 @@ export const Logout = async (authOptions) => {
     const cookieName = getSessionCookieName(authOptions) ?? "";
     cookie.delete(cookieName);
 };
-//# sourceMappingURL=logout.js.map

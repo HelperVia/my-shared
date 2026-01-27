@@ -5,4 +5,3 @@ export type ErrorEnvelope = {
     error: ErrorPayload;
     status: number;
 };
-//# sourceMappingURL=error.d.ts.map

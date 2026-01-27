@@ -5,4 +5,3 @@ export interface ResponseClientTypes<T> {
     error: string | null;
     status: number;
 }
-//# sourceMappingURL=response.client.type.d.ts.map
