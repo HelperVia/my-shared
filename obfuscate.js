@@ -2,8 +2,10 @@ const JavaScriptObfuscator = require("javascript-obfuscator");
 const fs = require("fs");
 const path = require("path");
 
+// Directory to obfuscate
 const distDir = path.join(__dirname, "dist");
 
+// Obfuscation configuration
 const obfuscationOptions = {
   compact: true,
   controlFlowFlattening: true,
@@ -36,6 +38,16 @@ const obfuscationOptions = {
   unicodeEscapeSequence: false,
 };
 
+// Files to exclude from obfuscation (server-side files with directives)
+const SKIP_FILES = [
+  "api.server.js", // Server-side API functions
+  "logout.js", // Contains "use server" directive
+  "auth.js", // May contain server directives
+  "cookie.js", // Server-side cookie operations
+  "loopDetector.js", // Middleware file
+];
+
+// Find and obfuscate all .js files
 function obfuscateDirectory(dir) {
   const files = fs.readdirSync(dir);
 
@@ -44,18 +56,27 @@ function obfuscateDirectory(dir) {
     const stat = fs.statSync(filePath);
 
     if (stat.isDirectory()) {
+      // Process subdirectories recursively
       obfuscateDirectory(filePath);
     } else if (file.endsWith(".js")) {
+      // Check if file should be skipped
+      if (SKIP_FILES.includes(file)) {
+        console.log(`⊘ Skipping (server file): ${filePath}`);
+        return;
+      }
       try {
         console.log(`Obfuscating: ${filePath}`);
 
+        // Read file
         const code = fs.readFileSync(filePath, "utf8");
 
+        // Obfuscate
         const obfuscatedCode = JavaScriptObfuscator.obfuscate(
           code,
           obfuscationOptions,
         ).getObfuscatedCode();
 
+        // Add watermark
         const watermark = `/**
  * @copyright ${new Date().getFullYear()} HelperVia / Yaşar Demirtaş
  * @license UNLICENSED - Proprietary and Confidential
@@ -64,6 +85,7 @@ function obfuscateDirectory(dir) {
  */
 `;
 
+        // Write file
         fs.writeFileSync(filePath, watermark + obfuscatedCode, "utf8");
 
         console.log(`✓ Obfuscated: ${filePath}`);
@@ -74,6 +96,7 @@ function obfuscateDirectory(dir) {
   });
 }
 
+// Start obfuscation
 console.log("Starting obfuscation...");
 obfuscateDirectory(distDir);
 console.log("Obfuscation complete!");
