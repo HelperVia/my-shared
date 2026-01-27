@@ -1,9 +1,9 @@
 /**
  * @copyright 2026 HelperVia / Yaşar Demirtaş
  * @license UNLICENSED - Proprietary and Confidential
- * @build-id 1769531127717-r83g3
+ * @build-id 1769535335318-l6wo4d
  * Unauthorized copying, distribution, or use is strictly prohibited.
  */
 
 export * from "./global.loading.context";
-export * from "./global.loading.provider";
+export { default as GlobalLoadingProvider } from "./global.loading.provider";
