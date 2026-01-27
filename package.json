@@ -47,6 +47,8 @@
     "build": "tsc",
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
+    "postbuild": "node obfuscate.js",
+    "build:dev": "tsc",
     "type-check": "tsc --noEmit"
   },
   "keywords": [
@@ -69,6 +71,7 @@
   "devDependencies": {
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.45",
+    "javascript-obfuscator": "^4.1.0",
     "next": "^14.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
