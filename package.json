@@ -1,5 +1,5 @@
 {
-  "name": "my-shared",
+  "name": "@helpervia/shared",
   "version": "1.0.0",
   "description": "Shared types, constants, utilities, hooks and contexts for frontend and backend",
   "main": "dist/index.js",
@@ -21,18 +21,20 @@
   ],
   "author": "",
   "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "react-device-detect": "^2.2.3",
+    "zod": "^3.22.0"
+  },
   "devDependencies": {
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.45",
-    "axios": "^1.6.0",
     "next": "^14.0.0",
     "next-auth": "^4.24.0",
     "react": "^18.0.0",
-    "react-device-detect": "^2.2.3",
     "react-dom": "^18.0.0",
     "rimraf": "^5.0.5",
-    "typescript": "^5.3.3",
-    "zod": "^3.22.0"
+    "typescript": "^5.3.3"
   },
   "peerDependencies": {
     "react": ">=18.0.0",
