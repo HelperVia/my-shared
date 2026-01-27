@@ -2,17 +2,13 @@
   "name": "@helpervia/shared",
   "version": "1.0.0",
   "description": "Shared types, constants, utilities, hooks and contexts for frontend and backend",
-  "main": "index.ts",
-  "types": "index.ts",
-  "exports": {
-    ".": {
-      "import": "./index.ts",
-      "require": "./index.ts",
-      "types": "./index.ts"
-    },
-    "./shared/*": "./shared/*"
-  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
     "type-check": "tsc --noEmit"
   },
   "keywords": [
@@ -62,8 +58,7 @@
     }
   },
   "files": [
-    "shared",
-    "index.ts"
+    "dist"
   ],
   "repository": {
     "type": "git",
