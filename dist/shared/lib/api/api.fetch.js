@@ -1,46 +1,37 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports._activeRequests = void 0;
-exports.setGlobalLoaderSetter = setGlobalLoaderSetter;
-exports.setUpdateActiveRequest = setUpdateActiveRequest;
-exports._updateLoadingState = _updateLoadingState;
-exports.decrementActiveRequests = decrementActiveRequests;
-exports.incrementActiveRequests = incrementActiveRequests;
-exports.apiFetch = apiFetch;
-exports._activeRequests = 1; // Number of ongoing API requests
+export let _activeRequests = 1; // Number of ongoing API requests
 let _setLoading = null; // Setter function for global loading state
 /**
  * Called by the provider to pass in the setState function.
  * @param {function(boolean)} fn - The setState function from the provider
  */
-function setGlobalLoaderSetter(fn) {
+export function setGlobalLoaderSetter(fn) {
     _setLoading = fn;
 }
-function setUpdateActiveRequest(activeRequestCount) {
-    exports._activeRequests = activeRequestCount;
+export function setUpdateActiveRequest(activeRequestCount) {
+    _activeRequests = activeRequestCount;
     _updateLoadingState();
 }
 /**
  * Internal helper to update global loading state based on active requests
  */
-function _updateLoadingState() {
+export function _updateLoadingState() {
     if (typeof _setLoading !== "function")
         return;
-    _setLoading(exports._activeRequests > 0);
+    _setLoading(_activeRequests > 0);
 }
-function decrementActiveRequests() {
-    exports._activeRequests = Math.max(0, exports._activeRequests - 1);
+export function decrementActiveRequests() {
+    _activeRequests = Math.max(0, _activeRequests - 1);
     _updateLoadingState();
 }
-function incrementActiveRequests() {
-    exports._activeRequests = Math.max(0, exports._activeRequests + 1);
+export function incrementActiveRequests() {
+    _activeRequests = Math.max(0, _activeRequests + 1);
     _updateLoadingState();
 }
 /**
  * apiFetch: a wrapper around fetch to manage global loading
  * Usage: await apiFetch("/api/endpoint", { method: "POST", body: JSON.stringify(...) })
  */
-async function apiFetch(input, init = {}, options = {}) {
+export async function apiFetch(input, init = {}, options = {}) {
     const { loading = false, loadingControl = false, headers = {} } = options;
     if (loading) {
         incrementActiveRequests();

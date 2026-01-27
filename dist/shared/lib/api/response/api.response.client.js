@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.ApiResponseClient = void 0;
 const defaultErrorMessage = "Network or parsing error";
-const ApiResponseClient = async (response) => {
+export const ApiResponseClient = async (response) => {
     try {
         const data = await response.json();
         if (data?.success) {
@@ -46,5 +43,4 @@ const ApiResponseClient = async (response) => {
         };
     }
 };
-exports.ApiResponseClient = ApiResponseClient;
 //# sourceMappingURL=api.response.client.js.map

@@ -1,14 +1,8 @@
-"use strict";
 "use server";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.createAxiosServer = void 0;
-const axios_1 = __importDefault(require("axios"));
-const error_normalize_1 = require("../../lib/error/error.normalize");
-const createAxiosServer = async (headers = {}, options) => {
-    const AxiosServer = axios_1.default.create({
+import axios from "axios";
+import { toError } from "../../lib/error/error.normalize";
+export const createAxiosServer = async (headers = {}, options) => {
+    const AxiosServer = axios.create({
         baseURL: options?.baseURL || process.env.NEXT_PUBLIC_REACT_APP_SERVICE || "",
         timeout: options?.Timeout ?? 100000,
         headers: {
@@ -31,7 +25,7 @@ const createAxiosServer = async (headers = {}, options) => {
         if (typeof response.data !== "object" ||
             response.data === null ||
             Array.isArray(response.data)) {
-            return (0, error_normalize_1.toError)(response.status);
+            return toError(response.status);
         }
         return response.data;
     }, (error) => {
@@ -40,15 +34,14 @@ const createAxiosServer = async (headers = {}, options) => {
             if (typeof error.response.data !== "object" ||
                 error.response.data === null ||
                 Array.isArray(error.response.data)) {
-                return (0, error_normalize_1.toError)(status);
+                return toError(status);
             }
-            return Promise.reject((0, error_normalize_1.toError)(error.response?.data?.error, status, process.env.NEXT_PUBLIC_DEBUG === "true"
+            return Promise.reject(toError(error.response?.data?.error, status, process.env.NEXT_PUBLIC_DEBUG === "true"
                 ? JSON.stringify(error.response?.data?.exception)
                 : undefined));
         }
-        return Promise.reject((0, error_normalize_1.toError)(status));
+        return Promise.reject(toError(status));
     });
     return AxiosServer;
 };
-exports.createAxiosServer = createAxiosServer;
 //# sourceMappingURL=api.server.js.map

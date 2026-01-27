@@ -1,8 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.createAuthCookies = void 0;
 const DEFAULT_COOKIE_PREFIX = "yd";
-const createAuthCookies = (props = {}) => {
+export const createAuthCookies = (props = {}) => {
     const { prefix = process.env.NEXT_PUBLIC_APP_PREFIX ?? DEFAULT_COOKIE_PREFIX, sessionToken, callbackUrl, csrfToken, pkceCodeVerifier, state, nonce, } = props;
     return {
         sessionToken: sessionToken ?? {
@@ -62,5 +59,4 @@ const createAuthCookies = (props = {}) => {
         },
     };
 };
-exports.createAuthCookies = createAuthCookies;
 //# sourceMappingURL=cookie.js.map

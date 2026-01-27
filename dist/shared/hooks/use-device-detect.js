@@ -1,11 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.useDeviceDetect = void 0;
-const react_1 = require("react");
-const react_device_detect_1 = require("react-device-detect");
-const useDeviceDetect = () => {
-    const [isMobile, setIsMobile] = (0, react_1.useState)(react_device_detect_1.isMobile);
-    (0, react_1.useEffect)(() => {
+import { useState, useEffect } from "react";
+import { isMobile as isInitialMobile, isTablet, isDesktop, } from "react-device-detect";
+export const useDeviceDetect = () => {
+    const [isMobile, setIsMobile] = useState(isInitialMobile);
+    useEffect(() => {
         const mediaQuery = window.matchMedia("(max-width: 767px)");
         const handleChange = (e) => {
             setIsMobile(e.matches);
@@ -16,7 +13,6 @@ const useDeviceDetect = () => {
             mediaQuery.removeEventListener("change", handleChange);
         };
     }, []);
-    return { isMobile, isTablet: react_device_detect_1.isTablet, isDesktop: react_device_detect_1.isDesktop };
+    return { isMobile, isTablet, isDesktop };
 };
-exports.useDeviceDetect = useDeviceDetect;
 //# sourceMappingURL=use-device-detect.js.map
