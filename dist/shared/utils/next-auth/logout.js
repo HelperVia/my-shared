@@ -1,3 +1,10 @@
+/**
+ * @copyright 2026 HelperVia / Yaşar Demirtaş
+ * @license UNLICENSED - Proprietary and Confidential
+ * @build-id 1769524312176-b93h4a
+ * Unauthorized copying, distribution, or use is strictly prohibited.
+ */
+
 "use server";
 import { cookies } from "next/headers";
 import { getSessionCookieName } from "./auth";

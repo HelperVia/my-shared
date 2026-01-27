@@ -1,3 +1,10 @@
+/**
+ * @copyright 2026 HelperVia / Yaşar Demirtaş
+ * @license UNLICENSED - Proprietary and Confidential
+ * @build-id 1769524312158-2ydarv
+ * Unauthorized copying, distribution, or use is strictly prohibited.
+ */
+
 "use server";
 import axios from "axios";
 import { toError } from "../../lib/error/error.normalize";

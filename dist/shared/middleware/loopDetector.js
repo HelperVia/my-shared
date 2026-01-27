@@ -1,3 +1,10 @@
+/**
+ * @copyright 2026 HelperVia / Yaşar Demirtaş
+ * @license UNLICENSED - Proprietary and Confidential
+ * @build-id 1769524312165-243y89
+ * Unauthorized copying, distribution, or use is strictly prohibited.
+ */
+
 import { NextResponse } from "next/server";
 const COOKIE = "X-Redirect-Count";
 export async function detectRouteLoop(req, res, options = {}) {

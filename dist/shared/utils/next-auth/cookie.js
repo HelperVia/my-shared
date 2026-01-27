@@ -1,3 +1,10 @@
+/**
+ * @copyright 2026 HelperVia / Yaşar Demirtaş
+ * @license UNLICENSED - Proprietary and Confidential
+ * @build-id 1769524312174-wzzcvg
+ * Unauthorized copying, distribution, or use is strictly prohibited.
+ */
+
 const DEFAULT_COOKIE_PREFIX = "yd";
 export const createAuthCookies = (props = {}) => {
     const { prefix = process.env.NEXT_PUBLIC_APP_PREFIX ?? DEFAULT_COOKIE_PREFIX, sessionToken, callbackUrl, csrfToken, pkceCodeVerifier, state, nonce, } = props;
