@@ -6,7 +6,7 @@ import {
   setUpdateActiveRequest,
   _updateLoadingState,
   decrementActiveRequests,
-} from "@shared/lib/api/api.fetch";
+} from "../../lib/api/api.fetch";
 
 import { GlobalLoadingContext } from "./global.loading.context";
 import { usePathname } from "next/navigation";

@@ -1,6 +1,6 @@
 "use server";
 import axios from "axios";
-import { toError } from "@shared/lib/error/error.normalize";
+import { toError } from "../../lib/error/error.normalize";
 
 type WithOptionalContentType<T> = T & {
   "Content-Type"?: string;
@@ -13,7 +13,7 @@ type optionsType = {
 };
 export const createAxiosServer = async <T>(
   headers: WithOptionalContentType<T> = {} as WithOptionalContentType<T>,
-  options?: optionsType
+  options?: optionsType,
 ) => {
   const AxiosServer = axios.create({
     baseURL:
@@ -68,13 +68,13 @@ export const createAxiosServer = async <T>(
             status,
             process.env.NEXT_PUBLIC_DEBUG === "true"
               ? JSON.stringify(error.response?.data?.exception)
-              : undefined
-          )
+              : undefined,
+          ),
         );
       }
 
       return Promise.reject(toError(status));
-    }
+    },
   );
 
   return AxiosServer;

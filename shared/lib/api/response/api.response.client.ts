@@ -1,7 +1,7 @@
 const defaultErrorMessage = "Network or parsing error";
-import { ResponseClientTypes } from "@/shared/types/api/response.client.type";
-export const ApiResponse = async <T>(
-  response: any
+import { ResponseClientTypes } from "../../../types/api";
+export const ApiResponseClient = async <T>(
+  response: any,
 ): Promise<ResponseClientTypes<T>> => {
   try {
     const data = await response.json();
@@ -23,7 +23,7 @@ export const ApiResponse = async <T>(
           errorMessage = data.error;
         } else if (typeof data.error === "object") {
           const errors: string[] | null = Object.values(
-            data.error
+            data.error,
           ).flat() as string[];
           errorMessage = errors[0] || defaultErrorMessage;
         }

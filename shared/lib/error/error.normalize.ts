@@ -1,10 +1,10 @@
-import { ErrorPayload, ErrorEnvelope } from "@shared/types/error/error";
+import { ErrorPayload, ErrorEnvelope } from "../../types/error/error";
 import { ZodError } from "zod";
 
 export const toError = (
   errorOrStatus?: unknown,
   status?: number,
-  debug?: string
+  debug?: string,
 ): ErrorEnvelope => {
   if (typeof errorOrStatus === "number") {
     return getErrorSchema(undefined, errorOrStatus, debug);
@@ -37,7 +37,7 @@ export const toError = (
 export const getErrorSchema = (
   error?: ErrorPayload,
   status?: number,
-  debug?: string
+  debug?: string,
 ): ErrorEnvelope => {
   return {
     success: false,
@@ -48,7 +48,7 @@ export const getErrorSchema = (
 };
 
 export function looksLikeZodError(
-  obj: unknown
+  obj: unknown,
 ): obj is { issues: Array<{ path?: any[]; message: string }> } {
   if (!obj || typeof obj !== "object") return false;
   const anyObj = obj as any;

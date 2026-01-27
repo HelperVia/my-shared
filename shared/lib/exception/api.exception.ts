@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-import { toError } from "@/shared/lib/error/error.normalize";
+import { toError } from "../../lib/error/error.normalize";
 import axios from "axios";
 
 type ApiHandler<C = Record<string, any>, R = NextRequest, T = any> = (
   req: R | T,
-  context?: C
+  context?: C,
 ) => Promise<NextResponse>;
 
 export function ApiException<
   C extends Record<string, any> | undefined = Record<string, any>,
   R = NextRequest,
-  T = any
+  T = any,
 >(handler: ApiHandler<C, R, T>) {
   return async (req: R | T, context?: C) => {
     try {
@@ -35,7 +35,7 @@ export function ApiException<
               config: e?.config,
             },
             null,
-            2
+            2,
           );
       }
 
@@ -48,7 +48,7 @@ export function ApiException<
         toError(errorData?.error, e?.status, errorData?.debug),
         {
           status: errorData?.status ?? 500,
-        }
+        },
       );
     }
   };
