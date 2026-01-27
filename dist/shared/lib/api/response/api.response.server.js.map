@@ -1,1 +1,0 @@
-{"version":3,"file":"api.response.server.js","sourceRoot":"","sources":["../../../../../shared/lib/api/response/api.response.server.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,MAAM,aAAa,CAAC;AAE3C,MAAM,CAAC,MAAM,iBAAiB,GAAG,KAAK,EAAE,QAAa,EAAE,EAAE;IACvD,OAAO,YAAY,CAAC,IAAI,CAAC,QAAQ,EAAE;QACjC,MAAM,EAAE,QAAQ,EAAE,MAAM;KACzB,CAAC,CAAC;AACL,CAAC,CAAC"}
