@@ -1,7 +1,7 @@
 /**
  * @copyright 2026 HelperVia / Yaşar Demirtaş
  * @license UNLICENSED - Proprietary and Confidential
- * @build-id 1769537849199-tedeo8
+ * @build-id 1769620035355-sr6168
  * Unauthorized copying, distribution, or use is strictly prohibited.
  */
 
@@ -10,7 +10,7 @@ import axios from "axios";
 import { toError } from "../../lib/error/error.normalize";
 export const createAxiosServer = async (headers = {}, options) => {
     const AxiosServer = axios.create({
-        baseURL: options?.baseURL || process.env.NEXT_PUBLIC_REACT_APP_SERVICE || "",
+        baseURL: options.baseURL,
         timeout: options?.Timeout ?? 100000,
         headers: {
             Accept: options?.Accept || "application/json",
@@ -43,7 +43,7 @@ export const createAxiosServer = async (headers = {}, options) => {
                 Array.isArray(error.response.data)) {
                 return toError(status);
             }
-            return Promise.reject(toError(error.response?.data?.error, status, process.env.NEXT_PUBLIC_DEBUG === "true"
+            return Promise.reject(toError(error.response?.data?.error, status, options.debug === true
                 ? JSON.stringify(error.response?.data?.exception)
                 : undefined));
         }

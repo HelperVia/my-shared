@@ -7,17 +7,17 @@ type WithOptionalContentType<T> = T & {
 };
 
 type optionsType = {
-  baseURL?: string;
+  baseURL: string;
   Timeout?: number;
   Accept?: string;
+  debug?: boolean;
 };
 export const createAxiosServer = async <T>(
   headers: WithOptionalContentType<T> = {} as WithOptionalContentType<T>,
-  options?: optionsType,
+  options: optionsType,
 ) => {
   const AxiosServer = axios.create({
-    baseURL:
-      options?.baseURL || process.env.NEXT_PUBLIC_REACT_APP_SERVICE || "",
+    baseURL: options.baseURL,
     timeout: options?.Timeout ?? 100000,
     headers: {
       Accept: options?.Accept || "application/json",
@@ -66,7 +66,7 @@ export const createAxiosServer = async <T>(
           toError(
             error.response?.data?.error,
             status,
-            process.env.NEXT_PUBLIC_DEBUG === "true"
+            options.debug === true
               ? JSON.stringify(error.response?.data?.exception)
               : undefined,
           ),
