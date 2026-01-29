@@ -1,7 +1,7 @@
 /**
  * @copyright 2026 HelperVia / Yaşar Demirtaş
  * @license UNLICENSED - Proprietary and Confidential
- * @build-id 1769620035355-9u5xxxh
+ * @build-id 1769715681020-oyqzsi
  * Unauthorized copying, distribution, or use is strictly prohibited.
  */
 
@@ -27,19 +27,23 @@ export function incrementActiveRequests() {
     _activeRequests = Math.max(0, _activeRequests + 1);
     _updateLoadingState();
 }
-export async function apiFetch(input, init = {}, options = {}) {
-    const { loading = false, loadingControl = false, headers = {} } = options;
+export async function apiFetch(input, init, options) {
+    const { loading = false, loadingControl = false, baseUrl } = options;
     if (loading) {
         incrementActiveRequests();
     }
     try {
-        const defaultHeaders = headers ?? {
-            "Content-Type": "application/json",
+        const merged = {
+            ...init,
+            headers: {
+                "Content-Type": "application/json",
+                ...init.headers,
+            },
         };
-        const merged = init && init.headers
-            ? { ...init, headers: { ...defaultHeaders, ...init.headers } }
-            : { ...init, headers: defaultHeaders };
-        const res = await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/" + input, merged);
+        const cleanInput = input.startsWith("/") ? input.slice(1) : input;
+        const cleanBase = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
+        const url = `${cleanBase}/${cleanInput}`;
+        const res = await fetch(url, merged);
         return res;
     }
     catch (err) {

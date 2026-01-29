@@ -6,7 +6,7 @@ let _setLoading: null | ((loading: boolean) => void) = null; // Setter function 
  * @param {function(boolean)} fn - The setState function from the provider
  */
 export function setGlobalLoaderSetter(
-  fn: React.Dispatch<React.SetStateAction<boolean>>
+  fn: React.Dispatch<React.SetStateAction<boolean>>,
 ) {
   _setLoading = fn;
 }
@@ -37,35 +37,34 @@ export function incrementActiveRequests() {
 
 export async function apiFetch(
   input: string,
-  init: {
-    headers?: Record<string | any, any>;
-  } = {},
+  init: RequestInit,
   options: {
     loading?: boolean;
     loadingControl?: boolean;
-    headers?: Record<string | any, any>;
-  } = {}
+    headers?: Record<string, any>;
+    baseUrl: string;
+  },
 ) {
-  const { loading = false, loadingControl = false, headers = {} } = options;
+  const { loading = false, loadingControl = false, baseUrl } = options;
   if (loading) {
     incrementActiveRequests();
   }
 
   try {
     // Add default headers (Content-Type JSON)
-    const defaultHeaders = headers ?? {
-      "Content-Type": "application/json",
+    const merged = {
+      ...init,
+      headers: {
+        "Content-Type": "application/json",
+        ...init.headers,
+      },
     };
 
-    const merged =
-      init && init.headers
-        ? { ...init, headers: { ...defaultHeaders, ...init.headers } }
-        : { ...init, headers: defaultHeaders };
+    const cleanInput = input.startsWith("/") ? input.slice(1) : input;
+    const cleanBase = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
+    const url = `${cleanBase}/${cleanInput}`;
 
-    const res = await fetch(
-      process.env.NEXT_PUBLIC_BASE_URL + "/" + input,
-      merged
-    );
+    const res = await fetch(url, merged);
 
     // Request may succeed or fail, finally block will decrease counter
     return res;

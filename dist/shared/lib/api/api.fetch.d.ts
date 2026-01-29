@@ -4,10 +4,9 @@ export declare function setUpdateActiveRequest(activeRequestCount: number): void
 export declare function _updateLoadingState(): void;
 export declare function decrementActiveRequests(): void;
 export declare function incrementActiveRequests(): void;
-export declare function apiFetch(input: string, init?: {
-    headers?: Record<string | any, any>;
-}, options?: {
+export declare function apiFetch(input: string, init: RequestInit, options: {
     loading?: boolean;
     loadingControl?: boolean;
-    headers?: Record<string | any, any>;
+    headers?: Record<string, any>;
+    baseUrl: string;
 }): Promise<Response>;
