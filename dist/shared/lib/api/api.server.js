@@ -1,7 +1,7 @@
 /**
  * @copyright 2026 HelperVia / Yaşar Demirtaş
  * @license UNLICENSED - Proprietary and Confidential
- * @build-id 1769762196695-7xspoq
+ * @build-id 1769774261098-kccl4i
  * Unauthorized copying, distribution, or use is strictly prohibited.
  */
 
@@ -32,9 +32,9 @@ export const createAxiosServer = async (headers = {}, options) => {
         if (typeof response.data !== "object" ||
             response.data === null ||
             Array.isArray(response.data)) {
-            return toError(response.status);
+            return Promise.reject(toError(response.status));
         }
-        return response.data;
+        return response;
     }, (error) => {
         let status = error.response?.status || 500;
         if (status >= 400 && status < 500) {

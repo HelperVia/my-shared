@@ -1,5 +1,5 @@
 "use server";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { toError } from "../../lib/error/error.normalize";
 
 type WithOptionalContentType<T> = T & {
@@ -40,16 +40,16 @@ export const createAxiosServer = async <T>(
   });
 
   AxiosServer.interceptors.response.use(
-    (response) => {
+    (response: AxiosResponse) => {
       if (
         typeof response.data !== "object" ||
         response.data === null ||
         Array.isArray(response.data)
       ) {
-        return toError(response.status);
+        return Promise.reject(toError(response.status));
       }
 
-      return response.data;
+      return response;
     },
     (error) => {
       let status = error.response?.status || 500;
