@@ -10,6 +10,7 @@
     "./lib/*": "./dist/shared/lib/*/index.js",
     "./hooks": "./dist/shared/hooks/index.js",
     "./utils": "./dist/shared/utils/index.js",
+    "./utils/*": "./dist/shared/utils/*/index.js",
     "./constants": "./dist/shared/constants/index.js",
     "./types": "./dist/shared/types/index.js",
     "./context": "./dist/shared/context/index.js",
@@ -29,6 +30,9 @@
       ],
       "utils": [
         "./dist/shared/utils/index.d.ts"
+      ],
+      "utils/*": [
+        "./dist/shared/utils/*/index.d.ts"
       ],
       "constants": [
         "./dist/shared/constants/index.d.ts"
