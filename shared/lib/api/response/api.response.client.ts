@@ -4,7 +4,7 @@ export const ApiResponseClient = async <T>(
   response: any,
 ): Promise<ResponseClientTypes<T>> => {
   try {
-    const data = await response.json();
+    const data = await response?.data.json();
 
     if (data?.success) {
       return {

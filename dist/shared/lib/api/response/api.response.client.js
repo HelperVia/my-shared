@@ -1,14 +1,14 @@
 /**
  * @copyright 2026 HelperVia / Yaşar Demirtaş
  * @license UNLICENSED - Proprietary and Confidential
- * @build-id 1769774261099-ui5cj
+ * @build-id 1769774561479-8a520q
  * Unauthorized copying, distribution, or use is strictly prohibited.
  */
 
 const defaultErrorMessage = "Network or parsing error";
 export const ApiResponseClient = async (response) => {
     try {
-        const data = await response.json();
+        const data = await response?.data.json();
         if (data?.success) {
             return {
                 ok: true,
