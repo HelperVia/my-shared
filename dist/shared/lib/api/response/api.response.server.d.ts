@@ -1,2 +1,5 @@
 import { NextResponse } from "next/server";
-export declare const ApiResponseServer: (response: any) => Promise<NextResponse<any>>;
+export interface ApiResponseServerOptionsType {
+    cookie: boolean;
+}
+export declare const ApiResponseServer: (response: any, options: ApiResponseServerOptionsType) => Promise<NextResponse<any>>;
